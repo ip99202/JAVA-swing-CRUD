@@ -3,6 +3,7 @@ package memberInfo;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class View {
     JFrame jframe = new JFrame();
@@ -92,5 +93,24 @@ public class View {
                 t4.setText("");
             }
         });
+
+        // 회원 목록 출력
+        btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                ta.setText("");
+                ArrayList<Model> arr = new ArrayList<Model>();
+                arr = dao.readMember();
+
+                ta.append("\t" + "name" + "\t" + "birth" + "\t" + "tel\n");
+                ta.append("\t" + "------------------------------------------------------------\n");
+
+                for (int i = 0; i < arr.size(); i++) {
+                    ta.append("\t" + arr.get(i).getName() + " \t " + arr.get(i).getBirth() + " \t " + arr.get(i).getTel()
+                            + "\n");
+                }
+            }
+        });
+
     }
 }

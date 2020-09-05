@@ -1,6 +1,7 @@
 package memberInfo;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Controller {
     Connection conn = null;
@@ -32,6 +33,28 @@ public class Controller {
                 e.printStackTrace();
             }
         }
+    }
+
+    // 회원 목록 출력
+    public ArrayList<Model> readMember() {
+        ArrayList<Model> arr = new ArrayList<Model>();
+        System.out.println(arr);
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from member;");
+            while (rs.next()) {
+                arr.add(new Model(rs.getString(1), rs.getString(2), rs.getString(3)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                st.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return arr;
     }
 
 }
