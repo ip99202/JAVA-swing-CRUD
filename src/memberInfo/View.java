@@ -112,5 +112,25 @@ public class View {
             }
         });
 
+        // 회원 수정
+        btn3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                ta.setText("");
+
+                String name = t1.getText();
+                String birth = t2.getText();
+                String tel = t3.getText();
+
+                dao.updateMember(name, tel);
+                ta.append("수정 완료 \n");
+
+                t1.setText("");
+                t2.setText("");
+                t3.setText("");
+                t4.setText("");
+            }
+        });
+
     }
 }

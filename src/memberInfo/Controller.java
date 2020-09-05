@@ -57,4 +57,21 @@ public class Controller {
         return arr;
     }
 
+    // 회원수정
+    public void updateMember(String name, String tel) {
+        try {
+            st = conn.createStatement();
+            int stmt = st
+                    .executeUpdate("update member set tel = '" + tel + "' where name = '" + name + "';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                st.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
