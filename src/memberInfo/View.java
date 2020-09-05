@@ -1,6 +1,8 @@
 package memberInfo;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class View {
     JFrame jframe = new JFrame();
@@ -70,5 +72,25 @@ public class View {
         Controller dao = new Controller();
 
 
+        // 회원 추가
+        btn1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                ta.setText("");
+
+                String name = t1.getText();
+                String birth = t2.getText();
+                String tel = t3.getText();
+
+                dao.insertMember(new Model(name, birth, tel));
+
+                ta.append("입력 완료 \n");
+
+                t1.setText("");
+                t2.setText("");
+                t3.setText("");
+                t4.setText("");
+            }
+        });
     }
 }
