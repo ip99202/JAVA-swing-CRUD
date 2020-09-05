@@ -74,4 +74,20 @@ public class Controller {
         }
     }
 
+    // 회원삭제
+    public void deleteMember(String name) {
+        try {
+            st = conn.createStatement();
+            int stmt = st.executeUpdate("delete from member where name = '" + name + "';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                st.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

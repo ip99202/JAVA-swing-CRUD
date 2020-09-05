@@ -132,5 +132,22 @@ public class View {
             }
         });
 
+        // 회원 삭제
+        btn4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                ta.setText("");
+
+                String name = t1.getText();
+                dao.deleteMember(name);
+                ta.append("삭제 완료 \n");
+
+                t1.setText("");
+                t2.setText("");
+                t3.setText("");
+                t4.setText("");
+            }
+        });
+
     }
 }
