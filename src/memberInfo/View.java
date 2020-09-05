@@ -149,5 +149,30 @@ public class View {
             }
         });
 
+        // 회원 검색
+        btn5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                ta.setText("");
+                String content = t4.getText();
+
+                ArrayList<Model> arr = new ArrayList<Model>();
+                arr = dao.searchMember(content);
+                ta.append(" \n");
+
+                ta.append("\t" + "name" + "\t" + "birth" + "\t" + "tel\n");
+                ta.append("\t" + "------------------------------------------------------------\n");
+
+                for (int i = 0; i < arr.size(); i++) {
+                    ta.append("\t" + arr.get(i).getName() + " \t " + arr.get(i).getBirth() + " \t " + arr.get(i).getTel()
+                            + "\n");
+                }
+
+                t1.setText("");
+                t2.setText("");
+                t3.setText("");
+                t4.setText("");
+            }
+        });
     }
 }

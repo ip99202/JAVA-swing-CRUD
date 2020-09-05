@@ -90,4 +90,25 @@ public class Controller {
         }
     }
 
+    // 회원 검색
+    public ArrayList<Model> searchMember(String content) {
+        ArrayList<Model> arr = new ArrayList<Model>();
+        System.out.println(arr);
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from member where name like '%" + content + "%';");
+            while (rs.next()) {
+                arr.add(new Model(rs.getString(1), rs.getString(2), rs.getString(3)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                st.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return arr;
+    }
 }
